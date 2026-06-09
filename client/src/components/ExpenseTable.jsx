@@ -1,4 +1,4 @@
-const ExpenseTable = () => {
+const ExpenseTable = ({ expenses }) => {
   return (
     <div className="bg-white rounded-xl shadow p-6">
       <h2 className="text-xl font-semibold mb-4">
@@ -18,22 +18,24 @@ const ExpenseTable = () => {
           </thead>
 
           <tbody>
-            <tr>
-              <td className="py-3">2026-06-09</td>
-              <td>Food</td>
-              <td>₹250</td>
-              <td>Lunch</td>
-              <td>
-                <button className="mr-2 text-blue-600">
-                  Edit
-                </button>
+  {expenses.map((expense) => (
+    <tr key={expense.id} className="border-b">
+      <td className="py-3">{expense.date}</td>
+      <td>{expense.category}</td>
+      <td>₹{expense.amount}</td>
+      <td>{expense.note}</td>
+      <td>
+        <button className="mr-2 text-blue-600">
+          Edit
+        </button>
 
-                <button className="text-red-600">
-                  Delete
-                </button>
-              </td>
-            </tr>
-          </tbody>
+        <button className="text-red-600">
+          Delete
+        </button>
+      </td>
+    </tr>
+  ))}
+</tbody>
         </table>
       </div>
     </div>
