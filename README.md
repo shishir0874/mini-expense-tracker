@@ -86,7 +86,7 @@ mini-expense-tracker/
 * [x] Add Expense functionality
 * [x] Edit Expense functionality
 * [x] Delete Expense functionality
-* [ ] Filter logic implementation
+* [x] Filter logic implementation
 * [x] Expense analytics
 * [x] Charts and visualizations
 * [ ] Backend API implementation

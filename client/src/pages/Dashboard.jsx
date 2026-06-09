@@ -11,6 +11,11 @@ const Dashboard = () => {
   const [expenses, setExpenses] = useState(sampleExpenses);
   const [editingExpense, setEditingExpense] =
     useState(null);
+          const [filters, setFilters] = useState({
+  category: "",
+  startDate: "",
+  endDate: "",
+});
     console.log(editingExpense);
   const addExpense = (newExpense) => {
     setExpenses((prev) => [
@@ -40,6 +45,25 @@ const Dashboard = () => {
 
     setEditingExpense(null);
   };
+  const filteredExpenses = expenses.filter((expense) => {
+  const categoryMatch =
+    !filters.category ||
+    expense.category === filters.category;
+
+  const startDateMatch =
+    !filters.startDate ||
+    expense.date >= filters.startDate;
+
+  const endDateMatch =
+    !filters.endDate ||
+    expense.date <= filters.endDate;
+
+  return (
+    categoryMatch &&
+    startDateMatch &&
+    endDateMatch
+  );
+});
   return (
     <div className="min-h-screen bg-slate-100">
       <div className="max-w-7xl mx-auto p-6 space-y-6">
@@ -48,7 +72,10 @@ const Dashboard = () => {
 
       <SummaryCards expenses={expenses} />
 
-      <ExpenseFilters />
+      <ExpenseFilters
+  filters={filters}
+  setFilters={setFilters}
+/>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div>
@@ -65,10 +92,10 @@ const Dashboard = () => {
       </div>
 
       <ExpenseTable
-        expenses={expenses}
-        onDeleteExpense={deleteExpense}
-        onEditExpense={editExpense}
-      />
+  expenses={filteredExpenses}
+  onDeleteExpense={deleteExpense}
+  onEditExpense={editExpense}
+/>
     </div>
   );
 };
