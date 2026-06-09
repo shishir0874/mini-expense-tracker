@@ -29,7 +29,7 @@ const deleteExpense = (id) => {
     </div>
       <Header />
 
-      <SummaryCards />
+      <SummaryCards expenses={expenses} />
 
       <ExpenseFilters />
 
@@ -39,7 +39,7 @@ const deleteExpense = (id) => {
         </div>
 
         <div className="lg:col-span-2">
-          <ExpenseChart />
+          <ExpenseChart expenses={expenses} />
         </div>
       </div>
 
