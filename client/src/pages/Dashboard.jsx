@@ -9,24 +9,41 @@ import ExpenseForm from "../components/ExpenseForm";
 
 const Dashboard = () => {
   const [expenses, setExpenses] = useState(sampleExpenses);
-    const addExpense = (newExpense) => {
-  setExpenses((prev) => [
-    {
-      id: Date.now(),
-      ...newExpense,
-    },
-    ...prev,
-  ]);
-};
-const deleteExpense = (id) => {
-  setExpenses((prev) =>
-    prev.filter((expense) => expense.id !== id)
-  );
-};
+  const [editingExpense, setEditingExpense] =
+    useState(null);
+    console.log(editingExpense);
+  const addExpense = (newExpense) => {
+    setExpenses((prev) => [
+      {
+        id: Date.now(),
+        ...newExpense,
+      },
+      ...prev,
+    ]);
+  };
+  const deleteExpense = (id) => {
+    setExpenses((prev) =>
+      prev.filter((expense) => expense.id !== id)
+    );
+  };
+  const editExpense = (expense) => {
+    setEditingExpense(expense);
+  };
+  const updateExpense = (updatedExpense) => {
+    setExpenses((prev) =>
+      prev.map((expense) =>
+        expense.id === updatedExpense.id
+          ? updatedExpense
+          : expense
+      )
+    );
+
+    setEditingExpense(null);
+  };
   return (
     <div className="min-h-screen bg-slate-100">
-  <div className="max-w-7xl mx-auto p-6 space-y-6">
-    </div>
+      <div className="max-w-7xl mx-auto p-6 space-y-6">
+      </div>
       <Header />
 
       <SummaryCards expenses={expenses} />
@@ -35,7 +52,11 @@ const deleteExpense = (id) => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div>
-          <ExpenseForm onAddExpense={addExpense} />
+          <ExpenseForm
+            onAddExpense={addExpense}
+            editingExpense={editingExpense}
+            onUpdateExpense={updateExpense}
+          />
         </div>
 
         <div className="lg:col-span-2">
@@ -44,9 +65,10 @@ const deleteExpense = (id) => {
       </div>
 
       <ExpenseTable
-  expenses={expenses}
-  onDeleteExpense={deleteExpense}
-/>
+        expenses={expenses}
+        onDeleteExpense={deleteExpense}
+        onEditExpense={editExpense}
+      />
     </div>
   );
 };

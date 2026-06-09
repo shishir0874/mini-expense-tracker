@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { categories } from "../utils/categories";
 
-const ExpenseForm = ({ onAddExpense }) => {
+const ExpenseForm = ({
+  onAddExpense,
+  editingExpense,
+  onUpdateExpense,
+}) => {
   console.log("onAddExpense =", onAddExpense);
   const [formData, setFormData] = useState({
     amount: "",
@@ -9,6 +13,16 @@ const ExpenseForm = ({ onAddExpense }) => {
     date: "",
     note: "",
   });
+  useEffect(() => {
+    if (editingExpense) {
+      setFormData({
+        amount: editingExpense.amount,
+        category: editingExpense.category,
+        date: editingExpense.date,
+        note: editingExpense.note,
+      });
+    }
+  }, [editingExpense]);
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -26,12 +40,21 @@ const ExpenseForm = ({ onAddExpense }) => {
       return;
     }
 
-    onAddExpense({
+    const expenseData = {
       amount: Number(formData.amount),
       category: formData.category,
       date: formData.date,
       note: formData.note,
-    });
+    };
+
+    if (editingExpense) {
+      onUpdateExpense({
+        ...expenseData,
+        id: editingExpense.id,
+      });
+    } else {
+      onAddExpense(expenseData);
+    }
 
     setFormData({
       amount: "",
@@ -94,7 +117,9 @@ const ExpenseForm = ({ onAddExpense }) => {
           onClick={handleSubmit}
           className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
         >
-          Add Expense
+          {editingExpense
+            ? "Update Expense"
+            : "Add Expense"}
         </button>
       </div>
     </div>

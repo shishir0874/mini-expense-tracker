@@ -1,6 +1,7 @@
 const ExpenseTable = ({
   expenses,
   onDeleteExpense,
+  onEditExpense,
 }) => {
   return (
     <div className="bg-white rounded-xl shadow p-6">
@@ -21,35 +22,40 @@ const ExpenseTable = ({
           </thead>
 
           <tbody>
-  {expenses.map((expense) => (
-    <tr key={expense.id} className="border-b">
-      <td className="py-3">{expense.date}</td>
-      <td>{expense.category}</td>
-      <td>₹{expense.amount}</td>
-      <td>{expense.note}</td>
-      <td>
-        <button className="mr-2 text-blue-600">
-          Edit
-        </button>
+            {expenses.map((expense) => (
+              <tr key={expense.id} className="border-b">
+                <td className="py-3">{expense.date}</td>
+                <td>{expense.category}</td>
+                <td>₹{expense.amount}</td>
+                <td>{expense.note}</td>
+                <td>
+                  <button
+                    onClick={() =>
+                      onEditExpense(expense)
+                    }
+                    className="mr-2 text-blue-600"
+                  >
+                    Edit
+                  </button>
 
-        <button
-  onClick={() => {
-    if (
-      window.confirm(
-        "Delete this expense?"
-      )
-    ) {
-      onDeleteExpense(expense.id);
-    }
-  }}
-  className="text-red-600"
->
-  Delete
-</button>
-      </td>
-    </tr>
-  ))}
-</tbody>
+                  <button
+                    onClick={() => {
+                      if (
+                        window.confirm(
+                          "Delete this expense?"
+                        )
+                      ) {
+                        onDeleteExpense(expense.id);
+                      }
+                    }}
+                    className="text-red-600"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
     </div>

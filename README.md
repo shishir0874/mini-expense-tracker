@@ -84,7 +84,7 @@ mini-expense-tracker/
 * [x] Sample Expense Data Setup
 * [x] Dynamic Expense Rendering
 * [x] Add Expense functionality
-* [ ] Edit Expense functionality
+* [x] Edit Expense functionality
 * [x] Delete Expense functionality
 * [ ] Filter logic implementation
 * [x] Expense analytics
