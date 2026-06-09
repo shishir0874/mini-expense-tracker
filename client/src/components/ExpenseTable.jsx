@@ -1,4 +1,7 @@
-const ExpenseTable = ({ expenses }) => {
+const ExpenseTable = ({
+  expenses,
+  onDeleteExpense,
+}) => {
   return (
     <div className="bg-white rounded-xl shadow p-6">
       <h2 className="text-xl font-semibold mb-4">
@@ -29,9 +32,20 @@ const ExpenseTable = ({ expenses }) => {
           Edit
         </button>
 
-        <button className="text-red-600">
-          Delete
-        </button>
+        <button
+  onClick={() => {
+    if (
+      window.confirm(
+        "Delete this expense?"
+      )
+    ) {
+      onDeleteExpense(expense.id);
+    }
+  }}
+  className="text-red-600"
+>
+  Delete
+</button>
       </td>
     </tr>
   ))}

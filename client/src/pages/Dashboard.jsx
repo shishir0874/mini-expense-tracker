@@ -18,6 +18,11 @@ const Dashboard = () => {
     ...prev,
   ]);
 };
+const deleteExpense = (id) => {
+  setExpenses((prev) =>
+    prev.filter((expense) => expense.id !== id)
+  );
+};
   return (
     <div className="min-h-screen bg-slate-100">
   <div className="max-w-7xl mx-auto p-6 space-y-6">
@@ -38,7 +43,10 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <ExpenseTable expenses={expenses}  />
+      <ExpenseTable
+  expenses={expenses}
+  onDeleteExpense={deleteExpense}
+/>
     </div>
   );
 };
