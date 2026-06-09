@@ -56,7 +56,9 @@ mini-expense-tracker/
 
 ├── client/
 │   ├── src/
+│   │   ├── assets/
 │   │   ├── components/
+│   │   ├── data/
 │   │   ├── pages/
 │   │   ├── services/
 │   │   └── utils/
@@ -71,17 +73,25 @@ mini-expense-tracker/
 
 ## Current Progress
 
-- [x] Project setup
-- [x] React + Vite configuration
-- [x] Tailwind CSS integration
-- [x] Dashboard UI foundation
-- [x] Expense Form UI
-- [ ] Backend API implementation
-- [ ] SQLite integration
-- [ ] Expense CRUD operations
-- [ ] Filters and analytics
-- [ ] Charts and visualizations
-- [ ] CSV export
+* [x] Project setup
+* [x] React + Vite configuration
+* [x] Tailwind CSS integration
+* [x] Dashboard UI foundation
+* [x] Summary Cards UI
+* [x] Expense Form UI
+* [x] Filters UI
+* [x] Expense Table UI
+* [x] Sample Expense Data Setup
+* [x] Dynamic Expense Rendering
+* [x] Add Expense functionality
+* [ ] Edit Expense functionality
+* [ ] Delete Expense functionality
+* [ ] Filter logic implementation
+* [ ] Expense analytics
+* [ ] Charts and visualizations
+* [ ] Backend API implementation
+* [ ] SQLite integration
+* [ ] CSV export
 
 ---
 
