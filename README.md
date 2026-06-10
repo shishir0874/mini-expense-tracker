@@ -90,7 +90,7 @@ mini-expense-tracker/
 * [x] Expense analytics
 * [x] Charts and visualizations
 * [x] Backend API implementation
-* [ ] SQLite integration
+* [x] SQLite integration
 * [ ] CSV export
 
 ---
