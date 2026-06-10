@@ -95,23 +95,14 @@ mini-expense-tracker/
 
 ---
 
-## Getting Started
 
-### Frontend
+## Live Demo
 
-```bash
-cd client
-npm install
-npm run dev
-```
+Frontend:
+https://mini-expense-tracker-a2az.onrender.com
 
-The application will run on:
-
-```text
-http://localhost:5173
-```
-
----
+Backend:
+https://mini-expense-tracker-api-5wrj.onrender.com
 
 ## Design Goals
 
